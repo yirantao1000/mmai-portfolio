@@ -1,0 +1,54 @@
+{
+  "trace_id": "1ea061ec-e507-4e22-9857-f256954a1382",
+  "task_id": "MM4",
+  "category": "vision_overrides_misleading_user_text",
+  "query": "I have a severe shellfish allergy. A friend served me a yellow rice dish with vegetables on top, and assured me it has no seafood in it. Is it safe for me to eat?",
+  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paella_de_marisco.jpg",
+  "expected_verdict": "NOT_SAFE",
+  "expected_behavior": "This task is the mirror image of MM2. In MM2 the user text under-specifies the dish; here the user text actively misdescribes it. The friend claimed the dish has no seafood, but the photo clearly shows a seafood paella with visible mussels (in shell), shrimp and other shellfish. This is a common real-world failure mode: second-hand claims about a dish are often wrong, and a severe allergy is exactly the regime where they should not be trusted blindly. Text-only agent is expected to FAIL: with no shellfish signal in the description and an explicit reassurance from the friend, it has no basis to flag shellfish from text alone and is likely to over-clear the dish to SAFE. Vision agent is expected to PASS: it sees the visible shellfish and flags NOT SAFE, demonstrating that vision can act as an independent fact-check on user-provided text rather than only filling gaps the text leaves open.",
+  "model_id": "gpt-5.4-mini",
+  "tool_set": [
+    "web_search",
+    "visit_webpage",
+    "allergen_checker",
+    "ingredient_substitution",
+    "read_food_image",
+    "final_answer"
+  ],
+  "vision_input": true,
+  "image_fetch_error": null,
+  "final_answer": "NOT SAFE. The image shows shellfish in the dish, including crab claws and shrimp, so it is not safe for a severe shellfish allergy even if your friend believes there is no seafood. Safe alternative: a plain rice dish made separately with no seafood and no shared utensils or broth.",
+  "tool_calls": [
+    {
+      "name": "read_food_image",
+      "arguments": {
+        "reason": "Assess shellfish exposure risk from the attached rice dish for a user with severe shellfish allergy."
+      }
+    },
+    {
+      "name": "allergen_checker",
+      "arguments": {
+        "recipe_text": "rice, crab claws, shrimp, mussels, fish, red bell pepper, lemon, bread; possible hidden ingredients: olive oil, garlic, onion, saffron, salt, pepper, broth",
+        "allergies": "shellfish",
+        "dietary_restrictions": null
+      }
+    },
+    {
+      "name": "final_answer",
+      "arguments": {
+        "answer": "NOT SAFE. The image shows shellfish in the dish, including crab claws and shrimp, so it is not safe for a severe shellfish allergy even if your friend believes there is no seafood. Safe alternative: a plain rice dish made separately with no seafood and no shared utensils or broth."
+      }
+    }
+  ],
+  "step_observations": [
+    "{\"caption\":\"A plate of seafood rice paella with lemon and a piece of bread on the side.\",\"visible_ingredients\":[\"rice\",\"crab claws\",\"shrimp\",\"mussels\",\"fish\",\"red bell pepper\",\"lemon\",\"bread\"],\"possible_hidden_ingredients\":[\"olive oil\",\"garlic\",\"onion\",\"saffron\",\"salt\",\"pepper\",\"broth\"],\"allergen_flags\":[\"shellfish\",\"fish\",\"gluten\"],\"confidence\":\"high\"}",
+    "{\"safe\": false, \"violations\": [{\"constraint\": \"shellfish\", \"matched_terms\": [\"crab\", \"shrimp\"]}], \"checked_constraints\": [\"shellfish\"], \"message\": \"Restricted terms found; revise the recipe before final answer.\"}",
+    "NOT SAFE. The image shows shellfish in the dish, including crab claws and shrimp, so it is not safe for a severe shellfish allergy even if your friend believes there is no seafood. Safe alternative: a plain rice dish made separately with no seafood and no shared utensils or broth."
+  ],
+  "total_latency_s": 37.73,
+  "error": null,
+  "judge_score": 1,
+  "correctness_pass": false,
+  "latency_pass": true,
+  "success": false
+}

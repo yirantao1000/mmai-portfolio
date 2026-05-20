@@ -1,0 +1,271 @@
+[
+  {
+    "trace_id": "8b4a3ba1-c23e-49bd-abe8-d0ce53c1771a",
+    "task_id": "MM1",
+    "category": "vague_dish_visible_allergen",
+    "query": "I have a peanut allergy. The waiter brought me a Thai noodle stir-fry but didn't say exactly what's in it. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Phat_Thai_kung_Chang_Khien_street_stall.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "Vision agent should identify pad thai with visible peanuts on top and give a confidently-grounded NOT SAFE. Text-only agent can at best say 'Thai noodle stir-fries sometimes contain peanuts so treat as risky', which is correct in verdict but weaker because it cannot see the actual peanut garnish.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "read_food_image",
+      "final_answer"
+    ],
+    "vision_input": true,
+    "image_fetch_error": null,
+    "final_answer": "NOT SAFE. The image shows crushed peanuts on top of the Thai noodle stir-fry, so it is unsafe for a peanut allergy. Safe alternative: ask for the dish without peanuts or choose a peanut-free noodle dish.",
+    "tool_calls": [
+      {
+        "name": "read_food_image",
+        "arguments": {
+          "reason": "Assessing a Thai noodle stir-fry for peanut allergy safety based on visible ingredients and possible hidden ingredients."
+        }
+      },
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "rice noodles, shrimp, bean sprouts, chives, lime wedge, crushed peanuts, egg, chili flakes; possible hidden ingredients: tamarind sauce, fish sauce, soy sauce, garlic, oil",
+          "allergies": "peanut",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "NOT SAFE. The image shows crushed peanuts on top of the Thai noodle stir-fry, so it is unsafe for a peanut allergy. Safe alternative: ask for the dish without peanuts or choose a peanut-free noodle dish."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"caption\":\"A plate of shrimp pad thai topped with bean sprouts, chives, lime, and crushed peanuts.\",\"visible_ingredients\":[\"rice noodles\",\"shrimp\",\"bean sprouts\",\"chives\",\"lime wedge\",\"crushed peanuts\",\"egg\",\"chili flakes\"],\"possible_hidden_ingredients\":[\"tamarind sauce\",\"fish sauce\",\"soy sauce\",\"garlic\",\"oil\"],\"allergen_flags\":[\"peanut\",\"egg\",\"shellfish\",\"fish\",\"soy\"],\"confidence\":\"high\"}",
+      "{\"safe\": false, \"violations\": [{\"constraint\": \"peanut\", \"matched_terms\": [\"peanuts\"]}], \"checked_constraints\": [\"peanut\"], \"message\": \"Restricted terms found; revise the recipe before final answer.\"}",
+      "NOT SAFE. The image shows crushed peanuts on top of the Thai noodle stir-fry, so it is unsafe for a peanut allergy. Safe alternative: ask for the dish without peanuts or choose a peanut-free noodle dish."
+    ],
+    "total_latency_s": 35.47,
+    "error": null,
+    "judge_score": 5,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  },
+  {
+    "trace_id": "71fbb5c4-b45c-44ea-a029-29e3086ee56b",
+    "task_id": "MM2",
+    "category": "vague_dish_visible_animal_product",
+    "query": "I am vegetarian (no meat, no fish). I was served a green salad at a restaurant. Can I eat it?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Caesar_salad.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "Vision agent should recognise Caesar salad (visible Parmesan shavings, croutons, romaine, creamy dressing) and warn that Caesar dressing typically contains anchovies. Text-only agent has no way to know it is a Caesar salad from 'green salad' and would either over-clear it as SAFE or default to a generic 'depends on the dressing' non-answer.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "read_food_image",
+      "final_answer"
+    ],
+    "vision_input": true,
+    "image_fetch_error": null,
+    "final_answer": "NOT SAFE. The salad appears to be a Caesar salad with creamy dressing, croutons, and cheese, and the checker flagged anchovy in the dressing, which is not vegetarian. Safe alternative: ask for the same salad with a vegetarian dressing and no anchovy-based Caesar dressing.",
+    "tool_calls": [
+      {
+        "name": "read_food_image",
+        "arguments": {
+          "reason": "Check whether the photographed green salad contains any non-vegetarian ingredients or hidden fish/meat products."
+        }
+      },
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "romaine lettuce, croutons, shredded cheese, Caesar dressing; possible hidden ingredients: anchovy, garlic, egg, parmesan, black pepper",
+          "dietary_restrictions": "vegetarian"
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "NOT SAFE. The salad appears to be a Caesar salad with creamy dressing, croutons, and cheese, and the checker flagged anchovy in the dressing, which is not vegetarian. Safe alternative: ask for the same salad with a vegetarian dressing and no anchovy-based Caesar dressing."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"caption\":\"A Caesar salad with romaine lettuce, croutons, shredded cheese, and creamy dressing on a patterned plate.\",\"visible_ingredients\":[\"romaine lettuce\",\"croutons\",\"shredded cheese\",\"Caesar dressing\"],\"possible_hidden_ingredients\":[\"anchovy\",\"garlic\",\"egg\",\"parmesan\",\"black pepper\"],\"allergen_flags\":[\"gluten\",\"dairy\",\"egg\",\"fish\"],\"confidence\":\"high\"}",
+      "{\"safe\": false, \"violations\": [{\"constraint\": \"vegetarian\", \"matched_terms\": [\"anchovy\"]}], \"checked_constraints\": [\"vegetarian\"], \"message\": \"Restricted terms found; revise the recipe before final answer.\"}",
+      "NOT SAFE. The salad appears to be a Caesar salad with creamy dressing, croutons, and cheese, and the checker flagged anchovy in the dressing, which is not vegetarian. Safe alternative: ask for the same salad with a vegetarian dressing and no anchovy-based Caesar dressing."
+    ],
+    "total_latency_s": 35.77,
+    "error": null,
+    "judge_score": 5,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  },
+  {
+    "trace_id": "07d319ed-877c-482b-9e62-93d419aa6bdc",
+    "task_id": "MM3",
+    "category": "vague_dish_safe_negative_control",
+    "query": "I have a peanut allergy. Someone gave me a piece of fruit. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Red_Apple.jpg",
+    "expected_verdict": "SAFE",
+    "expected_behavior": "Both versions should answer SAFE. Text-only agent gets it from general world knowledge ('whole fruit is peanut-free'); vision agent additionally grounds it in seeing an apple. This is the negative control: the vision agent must not over-flag.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "read_food_image",
+      "final_answer"
+    ],
+    "vision_input": true,
+    "image_fetch_error": null,
+    "final_answer": "SAFE. The image shows a plain apple, and apples do not contain peanuts. No peanut-related ingredients are visible, so it appears safe for a peanut allergy. If it was cut or handled with shared utensils, there is still a small cross-contact risk.",
+    "tool_calls": [
+      {
+        "name": "read_food_image",
+        "arguments": {
+          "reason": "Inspect attached fruit image for peanut-allergy safety assessment."
+        }
+      },
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "apple",
+          "allergies": "peanut",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "SAFE. The image shows a plain apple, and apples do not contain peanuts. No peanut-related ingredients are visible, so it appears safe for a peanut allergy. If it was cut or handled with shared utensils, there is still a small cross-contact risk."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"caption\":\"A single red apple on a white background.\",\"visible_ingredients\":[\"apple\"],\"possible_hidden_ingredients\":[],\"allergen_flags\":[],\"confidence\":\"high\"}",
+      "{\"safe\": true, \"violations\": [], \"checked_constraints\": [\"peanut\"], \"message\": \"No restricted terms found.\"}",
+      "SAFE. The image shows a plain apple, and apples do not contain peanuts. No peanut-related ingredients are visible, so it appears safe for a peanut allergy. If it was cut or handled with shared utensils, there is still a small cross-contact risk."
+    ],
+    "total_latency_s": 25.32,
+    "error": null,
+    "judge_score": 5,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  },
+  {
+    "trace_id": "1ea061ec-e507-4e22-9857-f256954a1382",
+    "task_id": "MM4",
+    "category": "vision_overrides_misleading_user_text",
+    "query": "I have a severe shellfish allergy. A friend served me a yellow rice dish with vegetables on top, and assured me it has no seafood in it. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paella_de_marisco.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "This task is the mirror image of MM2. In MM2 the user text under-specifies the dish; here the user text actively misdescribes it. The friend claimed the dish has no seafood, but the photo clearly shows a seafood paella with visible mussels (in shell), shrimp and other shellfish. This is a common real-world failure mode: second-hand claims about a dish are often wrong, and a severe allergy is exactly the regime where they should not be trusted blindly. Text-only agent is expected to FAIL: with no shellfish signal in the description and an explicit reassurance from the friend, it has no basis to flag shellfish from text alone and is likely to over-clear the dish to SAFE. Vision agent is expected to PASS: it sees the visible shellfish and flags NOT SAFE, demonstrating that vision can act as an independent fact-check on user-provided text rather than only filling gaps the text leaves open.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "read_food_image",
+      "final_answer"
+    ],
+    "vision_input": true,
+    "image_fetch_error": null,
+    "final_answer": "NOT SAFE. The image shows shellfish in the dish, including crab claws and shrimp, so it is not safe for a severe shellfish allergy even if your friend believes there is no seafood. Safe alternative: a plain rice dish made separately with no seafood and no shared utensils or broth.",
+    "tool_calls": [
+      {
+        "name": "read_food_image",
+        "arguments": {
+          "reason": "Assess shellfish exposure risk from the attached rice dish for a user with severe shellfish allergy."
+        }
+      },
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "rice, crab claws, shrimp, mussels, fish, red bell pepper, lemon, bread; possible hidden ingredients: olive oil, garlic, onion, saffron, salt, pepper, broth",
+          "allergies": "shellfish",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "NOT SAFE. The image shows shellfish in the dish, including crab claws and shrimp, so it is not safe for a severe shellfish allergy even if your friend believes there is no seafood. Safe alternative: a plain rice dish made separately with no seafood and no shared utensils or broth."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"caption\":\"A plate of seafood rice paella with lemon and a piece of bread on the side.\",\"visible_ingredients\":[\"rice\",\"crab claws\",\"shrimp\",\"mussels\",\"fish\",\"red bell pepper\",\"lemon\",\"bread\"],\"possible_hidden_ingredients\":[\"olive oil\",\"garlic\",\"onion\",\"saffron\",\"salt\",\"pepper\",\"broth\"],\"allergen_flags\":[\"shellfish\",\"fish\",\"gluten\"],\"confidence\":\"high\"}",
+      "{\"safe\": false, \"violations\": [{\"constraint\": \"shellfish\", \"matched_terms\": [\"crab\", \"shrimp\"]}], \"checked_constraints\": [\"shellfish\"], \"message\": \"Restricted terms found; revise the recipe before final answer.\"}",
+      "NOT SAFE. The image shows shellfish in the dish, including crab claws and shrimp, so it is not safe for a severe shellfish allergy even if your friend believes there is no seafood. Safe alternative: a plain rice dish made separately with no seafood and no shared utensils or broth."
+    ],
+    "total_latency_s": 37.73,
+    "error": null,
+    "judge_score": 1,
+    "correctness_pass": false,
+    "latency_pass": true,
+    "success": false
+  },
+  {
+    "trace_id": "c41286f2-0ced-47d9-ba29-077f30bf87e2",
+    "task_id": "MM5",
+    "category": "vision_overconfidence_visually_invisible_allergen",
+    "query": "I have a fish allergy. Someone served me what looks like a side of spicy fermented cabbage at a Korean restaurant. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kimchi.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "This task is designed to expose a natural failure mode of the vision agent: vision grounding can backfire when the safety-determining ingredient is fundamentally non-visual. The dish is kimchi, which is standardly fermented with jeotgal (salted fish/shrimp paste) or fish sauce — meaning it is unsafe for a fish allergy even though no fish is visible. The text-only agent is expected to PASS: from the description 'spicy fermented cabbage at a Korean restaurant' it can identify the dish as kimchi via recipe knowledge and flag the fish-sauce risk (NOT SAFE). The vision agent is expected to FAIL by over-trusting its visual extraction: read_food_image sees napa cabbage, chili paste, garlic, scallion — all plant ingredients, no fish visible — and reports a clean allergen profile, leading the agent to over-clear the dish to SAFE. This shows that 'visible ingredients' is not the same as 'all ingredients' and that vision can hurt when the safety signal lives in the recipe rather than in the photo.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "read_food_image",
+      "final_answer"
+    ],
+    "vision_input": true,
+    "image_fetch_error": null,
+    "final_answer": "NOT SAFE\nThe image shows kimchi, and the tool flagged possible hidden fish sauce and shrimp paste. With a fish allergy, this is risky even if the cabbage itself is visible. Safe alternative: ask for plain fermented cabbage or a kimchi specifically labeled fish-free/vegan.",
+    "tool_calls": [
+      {
+        "name": "read_food_image",
+        "arguments": {
+          "reason": "Inspect the attached dish for visible ingredients and allergen risk given the user's fish allergy."
+        }
+      },
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "Kimchi / spicy fermented cabbage. Visible ingredients: kimchi, cabbage, red chili seasoning. Possible hidden ingredients: garlic, ginger, salt, fish sauce, shrimp paste.",
+          "allergies": "fish",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "NOT SAFE\nThe image shows kimchi, and the tool flagged possible hidden fish sauce and shrimp paste. With a fish allergy, this is risky even if the cabbage itself is visible. Safe alternative: ask for plain fermented cabbage or a kimchi specifically labeled fish-free/vegan."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"caption\":\"Stacks of packaged red kimchi in clear plastic containers on a refrigerated store shelf.\",\"visible_ingredients\":[\"kimchi\",\"cabbage\",\"red chili seasoning\"],\"possible_hidden_ingredients\":[\"garlic\",\"ginger\",\"salt\",\"fish sauce\",\"shrimp paste\"],\"allergen_flags\":[\"fish\",\"shellfish\"],\"confidence\":\"medium\"}",
+      "{\"safe\": true, \"violations\": [], \"checked_constraints\": [], \"message\": \"No restricted terms found.\"}",
+      "NOT SAFE\nThe image shows kimchi, and the tool flagged possible hidden fish sauce and shrimp paste. With a fish allergy, this is risky even if the cabbage itself is visible. Safe alternative: ask for plain fermented cabbage or a kimchi specifically labeled fish-free/vegan."
+    ],
+    "total_latency_s": 13.55,
+    "error": null,
+    "judge_score": 5,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  }
+]

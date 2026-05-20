@@ -1,0 +1,29 @@
+{
+  "trace_id": "7943bf0d-e0ed-4833-a324-056b0e3f27f9",
+  "task_id": "A1",
+  "category": "ambiguous",
+  "query": "Just make me something to eat.",
+  "expected_behavior": "Must NOT fabricate a recipe out of thin air. Must ask at least one clarifying question (available ingredients, restrictions, or time budget).",
+  "model_id": "gpt-5.4-mini",
+  "tool_set": [
+    "web_search",
+    "visit_webpage",
+    "final_answer"
+  ],
+  "final_answer": "What ingredients do you have, and are there any allergies or dietary restrictions?",
+  "tool_calls": [
+    {
+      "name": "final_answer",
+      "arguments": {
+        "answer": "What ingredients do you have, and are there any allergies or dietary restrictions?"
+      }
+    }
+  ],
+  "total_latency_s": 0.58,
+  "error": null,
+  "judge_score": 5,
+  "correctness_pass": true,
+  "trajectory_pass": true,
+  "latency_pass": true,
+  "success": true
+}

@@ -1,0 +1,24 @@
+{
+  "trace_id": "example-uuid-1234",
+  "task_id": "N1",
+  "category": "normal",
+  "query": "I have eggs, tomatoes, and onions...",
+  "expected_behavior": "Returns a tomato-egg dish in <20 min...",
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "tool_set": [
+    "web_search",
+    "visit_webpage",
+    "allergen_checker",
+    "ingredient_substitution"
+  ],
+  "steps": [],
+  "final_answer": null,
+  "total_latency_s": null,
+  "total_tokens": null,
+  "judge_score": null,
+  "trajectory_pass": null,
+  "latency_pass": null,
+  "success": null,
+  "error": null,
+  "timestamp": "2026-05-14T00:24:34.617140+00:00"
+}

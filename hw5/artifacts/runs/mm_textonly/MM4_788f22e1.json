@@ -1,0 +1,46 @@
+{
+  "trace_id": "788f22e1-41f7-4265-aecf-05117e3b2e37",
+  "task_id": "MM4",
+  "category": "vision_overrides_misleading_user_text",
+  "query": "I have a severe shellfish allergy. A friend served me a yellow rice dish with vegetables on top, and assured me it has no seafood in it. Is it safe for me to eat?",
+  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paella_de_marisco.jpg",
+  "expected_verdict": "NOT_SAFE",
+  "expected_behavior": "This task is the mirror image of MM2. In MM2 the user text under-specifies the dish; here the user text actively misdescribes it. The friend claimed the dish has no seafood, but the photo clearly shows a seafood paella with visible mussels (in shell), shrimp and other shellfish. This is a common real-world failure mode: second-hand claims about a dish are often wrong, and a severe allergy is exactly the regime where they should not be trusted blindly. Text-only agent is expected to FAIL: with no shellfish signal in the description and an explicit reassurance from the friend, it has no basis to flag shellfish from text alone and is likely to over-clear the dish to SAFE. Vision agent is expected to PASS: it sees the visible shellfish and flags NOT SAFE, demonstrating that vision can act as an independent fact-check on user-provided text rather than only filling gaps the text leaves open.",
+  "model_id": "gpt-5.4-mini",
+  "tool_set": [
+    "web_search",
+    "visit_webpage",
+    "allergen_checker",
+    "ingredient_substitution",
+    "final_answer"
+  ],
+  "vision_input": false,
+  "image_fetch_error": null,
+  "final_answer": "SAFE. Based on the description, it’s a yellow rice dish with vegetables and no seafood was identified. The allergen check found no shellfish-related issues in the stated dish. There is still some residual risk from cross-contact or hidden seafood-based stock/sauce, so if you have a severe shellfish allergy, confirm there was no shrimp paste, fish sauce, oyster sauce, or shared cooking oil. If you want a safer alternative, choose plain rice with simply cooked vegetables prepared in a shellfish-free kitchen.",
+  "tool_calls": [
+    {
+      "name": "allergen_checker",
+      "arguments": {
+        "recipe_text": "yellow rice dish with vegetables on top",
+        "allergies": "shellfish",
+        "dietary_restrictions": null
+      }
+    },
+    {
+      "name": "final_answer",
+      "arguments": {
+        "answer": "SAFE. Based on the description, it’s a yellow rice dish with vegetables and no seafood was identified. The allergen check found no shellfish-related issues in the stated dish. There is still some residual risk from cross-contact or hidden seafood-based stock/sauce, so if you have a severe shellfish allergy, confirm there was no shrimp paste, fish sauce, oyster sauce, or shared cooking oil. If you want a safer alternative, choose plain rice with simply cooked vegetables prepared in a shellfish-free kitchen."
+      }
+    }
+  ],
+  "step_observations": [
+    "{\"safe\": true, \"violations\": [], \"checked_constraints\": [\"shellfish\"], \"message\": \"No restricted terms found.\"}",
+    "SAFE. Based on the description, it’s a yellow rice dish with vegetables and no seafood was identified. The allergen check found no shellfish-related issues in the stated dish. There is still some residual risk from cross-contact or hidden seafood-based stock/sauce, so if you have a severe shellfish allergy, confirm there was no shrimp paste, fish sauce, oyster sauce, or shared cooking oil. If you want a safer alternative, choose plain rice with simply cooked vegetables prepared in a shellfish-free kitchen."
+  ],
+  "total_latency_s": 2.12,
+  "error": null,
+  "judge_score": 1,
+  "correctness_pass": false,
+  "latency_pass": true,
+  "success": false
+}

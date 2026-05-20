@@ -1,0 +1,54 @@
+{
+  "trace_id": "c41286f2-0ced-47d9-ba29-077f30bf87e2",
+  "task_id": "MM5",
+  "category": "vision_overconfidence_visually_invisible_allergen",
+  "query": "I have a fish allergy. Someone served me what looks like a side of spicy fermented cabbage at a Korean restaurant. Is it safe for me to eat?",
+  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kimchi.jpg",
+  "expected_verdict": "NOT_SAFE",
+  "expected_behavior": "This task is designed to expose a natural failure mode of the vision agent: vision grounding can backfire when the safety-determining ingredient is fundamentally non-visual. The dish is kimchi, which is standardly fermented with jeotgal (salted fish/shrimp paste) or fish sauce — meaning it is unsafe for a fish allergy even though no fish is visible. The text-only agent is expected to PASS: from the description 'spicy fermented cabbage at a Korean restaurant' it can identify the dish as kimchi via recipe knowledge and flag the fish-sauce risk (NOT SAFE). The vision agent is expected to FAIL by over-trusting its visual extraction: read_food_image sees napa cabbage, chili paste, garlic, scallion — all plant ingredients, no fish visible — and reports a clean allergen profile, leading the agent to over-clear the dish to SAFE. This shows that 'visible ingredients' is not the same as 'all ingredients' and that vision can hurt when the safety signal lives in the recipe rather than in the photo.",
+  "model_id": "gpt-5.4-mini",
+  "tool_set": [
+    "web_search",
+    "visit_webpage",
+    "allergen_checker",
+    "ingredient_substitution",
+    "read_food_image",
+    "final_answer"
+  ],
+  "vision_input": true,
+  "image_fetch_error": null,
+  "final_answer": "NOT SAFE\nThe image shows kimchi, and the tool flagged possible hidden fish sauce and shrimp paste. With a fish allergy, this is risky even if the cabbage itself is visible. Safe alternative: ask for plain fermented cabbage or a kimchi specifically labeled fish-free/vegan.",
+  "tool_calls": [
+    {
+      "name": "read_food_image",
+      "arguments": {
+        "reason": "Inspect the attached dish for visible ingredients and allergen risk given the user's fish allergy."
+      }
+    },
+    {
+      "name": "allergen_checker",
+      "arguments": {
+        "recipe_text": "Kimchi / spicy fermented cabbage. Visible ingredients: kimchi, cabbage, red chili seasoning. Possible hidden ingredients: garlic, ginger, salt, fish sauce, shrimp paste.",
+        "allergies": "fish",
+        "dietary_restrictions": null
+      }
+    },
+    {
+      "name": "final_answer",
+      "arguments": {
+        "answer": "NOT SAFE\nThe image shows kimchi, and the tool flagged possible hidden fish sauce and shrimp paste. With a fish allergy, this is risky even if the cabbage itself is visible. Safe alternative: ask for plain fermented cabbage or a kimchi specifically labeled fish-free/vegan."
+      }
+    }
+  ],
+  "step_observations": [
+    "{\"caption\":\"Stacks of packaged red kimchi in clear plastic containers on a refrigerated store shelf.\",\"visible_ingredients\":[\"kimchi\",\"cabbage\",\"red chili seasoning\"],\"possible_hidden_ingredients\":[\"garlic\",\"ginger\",\"salt\",\"fish sauce\",\"shrimp paste\"],\"allergen_flags\":[\"fish\",\"shellfish\"],\"confidence\":\"medium\"}",
+    "{\"safe\": true, \"violations\": [], \"checked_constraints\": [], \"message\": \"No restricted terms found.\"}",
+    "NOT SAFE\nThe image shows kimchi, and the tool flagged possible hidden fish sauce and shrimp paste. With a fish allergy, this is risky even if the cabbage itself is visible. Safe alternative: ask for plain fermented cabbage or a kimchi specifically labeled fish-free/vegan."
+  ],
+  "total_latency_s": 13.55,
+  "error": null,
+  "judge_score": 5,
+  "correctness_pass": true,
+  "latency_pass": true,
+  "success": true
+}

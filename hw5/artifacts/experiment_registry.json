@@ -1,0 +1,26 @@
+{
+  "baseline_recipe_agent": {
+    "model_id": "gpt-5.4-mini",
+    "model_class": "OpenAIModel",
+    "tool_set": [
+      "web_search",
+      "visit_webpage"
+    ],
+    "decoding": {
+      "temperature": 0.2
+    }
+  },
+  "custom_recipe_agent": {
+    "model_id": "gpt-5.4-mini",
+    "model_class": "OpenAIModel",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution"
+    ],
+    "decoding": {
+      "temperature": 0.2
+    }
+  }
+}

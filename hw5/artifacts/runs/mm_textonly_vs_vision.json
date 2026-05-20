@@ -1,0 +1,101 @@
+[
+  {
+    "task_id": "MM1",
+    "category": "vague_dish_visible_allergen",
+    "expected_verdict": "NOT_SAFE",
+    "text_only_judge": 4,
+    "vision_judge": 5,
+    "text_only_success": true,
+    "vision_success": true,
+    "text_only_tools": [
+      "allergen_checker",
+      "final_answer"
+    ],
+    "vision_tools": [
+      "read_food_image",
+      "allergen_checker",
+      "final_answer"
+    ],
+    "text_only_latency_s": 2.89,
+    "vision_latency_s": 35.47
+  },
+  {
+    "task_id": "MM2",
+    "category": "vague_dish_visible_animal_product",
+    "expected_verdict": "NOT_SAFE",
+    "text_only_judge": 1,
+    "vision_judge": 5,
+    "text_only_success": false,
+    "vision_success": true,
+    "text_only_tools": [
+      "allergen_checker",
+      "final_answer"
+    ],
+    "vision_tools": [
+      "read_food_image",
+      "allergen_checker",
+      "final_answer"
+    ],
+    "text_only_latency_s": 1.97,
+    "vision_latency_s": 35.77
+  },
+  {
+    "task_id": "MM3",
+    "category": "vague_dish_safe_negative_control",
+    "expected_verdict": "SAFE",
+    "text_only_judge": 4,
+    "vision_judge": 5,
+    "text_only_success": true,
+    "vision_success": true,
+    "text_only_tools": [
+      "final_answer"
+    ],
+    "vision_tools": [
+      "read_food_image",
+      "allergen_checker",
+      "final_answer"
+    ],
+    "text_only_latency_s": 0.92,
+    "vision_latency_s": 25.32
+  },
+  {
+    "task_id": "MM4",
+    "category": "vision_overrides_misleading_user_text",
+    "expected_verdict": "NOT_SAFE",
+    "text_only_judge": 1,
+    "vision_judge": 1,
+    "text_only_success": false,
+    "vision_success": false,
+    "text_only_tools": [
+      "allergen_checker",
+      "final_answer"
+    ],
+    "vision_tools": [
+      "read_food_image",
+      "allergen_checker",
+      "final_answer"
+    ],
+    "text_only_latency_s": 2.12,
+    "vision_latency_s": 37.73
+  },
+  {
+    "task_id": "MM5",
+    "category": "vision_overconfidence_visually_invisible_allergen",
+    "expected_verdict": "NOT_SAFE",
+    "text_only_judge": 5,
+    "vision_judge": 5,
+    "text_only_success": true,
+    "vision_success": true,
+    "text_only_tools": [
+      "allergen_checker",
+      "final_answer"
+    ],
+    "vision_tools": [
+      "read_food_image",
+      "allergen_checker",
+      "final_answer"
+    ],
+    "text_only_latency_s": 2.8,
+    "vision_latency_s": 13.55
+  }
+]

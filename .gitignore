@@ -1,8 +1,5 @@
+# --- Final-project (V3 pipeline) ---
 *.bag
-__pycache__/
-*.pyc
-.openai_key
-.env
 annotations/
 frame_cache/
 checkpoints/
@@ -13,3 +10,35 @@ _downloads/
 renders/
 FINAL_SUMMARY.txt
 data/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Secrets (never push) ---
+.openai_key
+.env
+.env.*
+secrets.json
+*secret*
+*.key
+*api_key*
+*token*
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Misc ---
+*.log
+*.tmp

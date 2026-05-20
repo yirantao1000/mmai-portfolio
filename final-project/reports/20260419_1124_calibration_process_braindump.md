@@ -8,7 +8,7 @@
 ## Starting point
 
 Going into this the pipeline already had:
-- Phase-aware comfort scoring (`approach` / `intent` / `execution`) with per-phase `(emotion_weight, posture_weight, gaze_weight)` fusion inside [src/comfort.py](src/comfort.py).
+- Phase-aware comfort scoring (`approach` / `intent` / `execution`) with per-phase `(emotion_weight, posture_weight, gaze_weight)` fusion inside [src/comfort.py](../src/comfort.py).
 - A previous calibration pass (race-0, pre my work) that produced a `deploy.yaml` landing at Youden **J = 1.0** on the held-out test at τ\* = 80.
 - 31 RealSense `.bag` recordings across 5 scenarios, with extracted parquets cached so re-runs don't touch the GPU.
 - 75/25 stratified train/test split (23 train, 8 test), seed=42.
@@ -43,7 +43,7 @@ Neither cleared all the pass-gates. The race validated that the composite object
 
 ## Problem identified between races: hard-coded drag ceiling
 
-Looking at the trajectories I noticed sc02 often stayed flat or drifted down despite high emotion scores. Traced it to [src/comfort.py](src/comfort.py): when the face detector misses a frame, comfort decays toward a hardcoded `no_face_decay_target = 35.0` at rate `0.15 /s`. sc01 walkby has ~40 % face detection on test — 60 % of frames are dragging comfort toward 35. sc02 has 68–72 % face detect — still dragging, just less.
+Looking at the trajectories I noticed sc02 often stayed flat or drifted down despite high emotion scores. Traced it to [src/comfort.py](../src/comfort.py): when the face detector misses a frame, comfort decays toward a hardcoded `no_face_decay_target = 35.0` at rate `0.15 /s`. sc01 walkby has ~40 % face detection on test — 60 % of frames are dragging comfort toward 35. sc02 has 68–72 % face detect — still dragging, just less.
 
 These four hardcoded constants (`no_face_target`, `no_face_rate`, `no_pose_target`, `no_pose_rate`) were silently capping what DE could achieve. Promoted all four to tunables with bounds:
 - `no_face_target ∈ [30, 80]`, `no_face_rate ∈ [0.05, 0.50]`
@@ -139,7 +139,7 @@ Full detail in [reports/default_vs_deploy.md](default_vs_deploy.md).
 
 ## Things that went wrong (process)
 
-- **`Path.relative_to(PROJECT_ROOT)` crash on relative paths.** Both [scripts/optimize_params.py](scripts/optimize_params.py) and [scripts/evaluate_test.py](scripts/evaluate_test.py) called this on the final "Wrote …" print with `args.config_out` as a relative path. Crashed after the config/report had already been written, so no data loss, but killed subshell chains' visible success-message. Fixed with `.resolve()` + try/except.
+- **`Path.relative_to(PROJECT_ROOT)` crash on relative paths.** Both [scripts/optimize_params.py](../scripts/optimize_params.py) and [scripts/evaluate_test.py](../scripts/evaluate_test.py) called this on the final "Wrote …" print with `args.config_out` as a relative path. Crashed after the config/report had already been written, so no data loss, but killed subshell chains' visible success-message. Fixed with `.resolve()` + try/except.
 - **Default report paths dumped to project root.** `evaluate_test.py --report` defaulted to `PROJECT_ROOT / "calibration_report.json"`, and I passed relative `--report calibration_report_X.json` during races. Produced 9 duplicate JSONs at root (all byte-identical to their timestamp-tagged `reports/` archives). Cleaned up + fixed defaults to `reports/...`.
 - **Overnight check-in vs actual wake.** The conversation-compaction summary said I'd scheduled a 02:30 check-in, but actual system wake was 09:56 (8-hour gap with all background DE jobs completing cleanly on their own). Worked fine but unsettling.
 - **Variant G result initially misread.** When G's eval crashed at the `relative_to` bug, the printed LORO output was the correct result — but the report JSON wasn't written. Thought for a moment G was missing data; was actually just missing the final file-write step.

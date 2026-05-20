@@ -1,0 +1,167 @@
+[
+  {
+    "task_id": "N1",
+    "category": "normal",
+    "baseline_success": false,
+    "custom_success": true,
+    "baseline_judge": 3,
+    "custom_judge": 4,
+    "baseline_trajectory": true,
+    "custom_trajectory": true,
+    "baseline_latency_s": 11.84,
+    "custom_latency_s": 13.68,
+    "baseline_tool_calls": [
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "final_answer"
+    ],
+    "custom_tool_calls": [
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "final_answer"
+    ]
+  },
+  {
+    "task_id": "E2",
+    "category": "edge",
+    "baseline_success": false,
+    "custom_success": true,
+    "baseline_judge": 5,
+    "custom_judge": 5,
+    "baseline_trajectory": false,
+    "custom_trajectory": true,
+    "baseline_latency_s": 11.28,
+    "custom_latency_s": 10.82,
+    "baseline_tool_calls": [
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "visit_webpage",
+      "final_answer"
+    ],
+    "custom_tool_calls": [
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "visit_webpage",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ]
+  },
+  {
+    "task_id": "E3",
+    "category": "edge",
+    "baseline_success": false,
+    "custom_success": true,
+    "baseline_judge": 3,
+    "custom_judge": 5,
+    "baseline_trajectory": false,
+    "custom_trajectory": true,
+    "baseline_latency_s": 12.36,
+    "custom_latency_s": 10.34,
+    "baseline_tool_calls": [
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "web_search"
+    ],
+    "custom_tool_calls": [
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ]
+  },
+  {
+    "task_id": "A1",
+    "category": "ambiguous",
+    "baseline_success": true,
+    "custom_success": false,
+    "baseline_judge": 5,
+    "custom_judge": 2,
+    "baseline_trajectory": true,
+    "custom_trajectory": true,
+    "baseline_latency_s": 10.85,
+    "custom_latency_s": 15.55,
+    "baseline_tool_calls": [
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage"
+    ],
+    "custom_tool_calls": [
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "visit_webpage",
+      "visit_webpage",
+      "final_answer"
+    ]
+  },
+  {
+    "task_id": "A2",
+    "category": "adversarial",
+    "baseline_success": false,
+    "custom_success": true,
+    "baseline_judge": 5,
+    "custom_judge": 5,
+    "baseline_trajectory": false,
+    "custom_trajectory": true,
+    "baseline_latency_s": 19.08,
+    "custom_latency_s": 13.85,
+    "baseline_tool_calls": [
+      "web_search",
+      "visit_webpage",
+      "final_answer"
+    ],
+    "custom_tool_calls": [
+      "allergen_checker",
+      "ingredient_substitution",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "web_search",
+      "visit_webpage",
+      "web_search",
+      "final_answer"
+    ]
+  }
+]

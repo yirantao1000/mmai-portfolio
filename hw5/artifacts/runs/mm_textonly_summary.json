@@ -1,0 +1,222 @@
+[
+  {
+    "trace_id": "7cf59e39-a154-46a8-872b-0d69bb895c81",
+    "task_id": "MM1",
+    "category": "vague_dish_visible_allergen",
+    "query": "I have a peanut allergy. The waiter brought me a Thai noodle stir-fry but didn't say exactly what's in it. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Phat_Thai_kung_Chang_Khien_street_stall.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "Vision agent should identify pad thai with visible peanuts on top and give a confidently-grounded NOT SAFE. Text-only agent can at best say 'Thai noodle stir-fries sometimes contain peanuts so treat as risky', which is correct in verdict but weaker because it cannot see the actual peanut garnish.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ],
+    "vision_input": false,
+    "image_fetch_error": null,
+    "final_answer": "NOT SAFE. A Thai noodle stir-fry commonly contains peanut sauce, crushed peanuts, or peanut oil, and the dish was not specified in enough detail to rule that out. Because you have a peanut allergy, it’s safer not to eat it. Safe alternative: ask for a clearly peanut-free dish prepared separately, such as plain rice with grilled chicken and vegetables.",
+    "tool_calls": [
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "Thai noodle stir-fry",
+          "allergies": "peanut",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "NOT SAFE. A Thai noodle stir-fry commonly contains peanut sauce, crushed peanuts, or peanut oil, and the dish was not specified in enough detail to rule that out. Because you have a peanut allergy, it’s safer not to eat it. Safe alternative: ask for a clearly peanut-free dish prepared separately, such as plain rice with grilled chicken and vegetables."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"safe\": true, \"violations\": [], \"checked_constraints\": [\"peanut\"], \"message\": \"No restricted terms found.\"}",
+      "NOT SAFE. A Thai noodle stir-fry commonly contains peanut sauce, crushed peanuts, or peanut oil, and the dish was not specified in enough detail to rule that out. Because you have a peanut allergy, it’s safer not to eat it. Safe alternative: ask for a clearly peanut-free dish prepared separately, such as plain rice with grilled chicken and vegetables."
+    ],
+    "total_latency_s": 2.89,
+    "error": null,
+    "judge_score": 4,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  },
+  {
+    "trace_id": "455899ee-6863-4555-b159-fc3a0535d025",
+    "task_id": "MM2",
+    "category": "vague_dish_visible_animal_product",
+    "query": "I am vegetarian (no meat, no fish). I was served a green salad at a restaurant. Can I eat it?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Caesar_salad.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "Vision agent should recognise Caesar salad (visible Parmesan shavings, croutons, romaine, creamy dressing) and warn that Caesar dressing typically contains anchovies. Text-only agent has no way to know it is a Caesar salad from 'green salad' and would either over-clear it as SAFE or default to a generic 'depends on the dressing' non-answer.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ],
+    "vision_input": false,
+    "image_fetch_error": null,
+    "final_answer": "SAFE. A green salad is generally vegetarian, and the allergen check found no restricted terms. If it includes hidden toppings like bacon, anchovies, or meat-based dressing, that would change the verdict, but based on the information given it looks safe for a vegetarian diet.",
+    "tool_calls": [
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "green salad",
+          "dietary_restrictions": "vegetarian"
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "SAFE. A green salad is generally vegetarian, and the allergen check found no restricted terms. If it includes hidden toppings like bacon, anchovies, or meat-based dressing, that would change the verdict, but based on the information given it looks safe for a vegetarian diet."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"safe\": true, \"violations\": [], \"checked_constraints\": [\"vegetarian\"], \"message\": \"No restricted terms found.\"}",
+      "SAFE. A green salad is generally vegetarian, and the allergen check found no restricted terms. If it includes hidden toppings like bacon, anchovies, or meat-based dressing, that would change the verdict, but based on the information given it looks safe for a vegetarian diet."
+    ],
+    "total_latency_s": 1.97,
+    "error": null,
+    "judge_score": 1,
+    "correctness_pass": false,
+    "latency_pass": true,
+    "success": false
+  },
+  {
+    "trace_id": "f69f998a-9b1f-4da7-9835-8b34222899b6",
+    "task_id": "MM3",
+    "category": "vague_dish_safe_negative_control",
+    "query": "I have a peanut allergy. Someone gave me a piece of fruit. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Red_Apple.jpg",
+    "expected_verdict": "SAFE",
+    "expected_behavior": "Both versions should answer SAFE. Text-only agent gets it from general world knowledge ('whole fruit is peanut-free'); vision agent additionally grounds it in seeing an apple. This is the negative control: the vision agent must not over-flag.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ],
+    "vision_input": false,
+    "image_fetch_error": null,
+    "final_answer": "SAFE. A piece of fruit is generally safe for a peanut allergy, since fruit does not normally contain peanuts. There is still a small residual risk if it was cut or prepared with peanut-containing utensils or toppings, but based on the dish description alone it is safe to eat.",
+    "tool_calls": [
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "SAFE. A piece of fruit is generally safe for a peanut allergy, since fruit does not normally contain peanuts. There is still a small residual risk if it was cut or prepared with peanut-containing utensils or toppings, but based on the dish description alone it is safe to eat."
+        }
+      }
+    ],
+    "step_observations": [
+      "SAFE. A piece of fruit is generally safe for a peanut allergy, since fruit does not normally contain peanuts. There is still a small residual risk if it was cut or prepared with peanut-containing utensils or toppings, but based on the dish description alone it is safe to eat."
+    ],
+    "total_latency_s": 0.92,
+    "error": null,
+    "judge_score": 4,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  },
+  {
+    "trace_id": "788f22e1-41f7-4265-aecf-05117e3b2e37",
+    "task_id": "MM4",
+    "category": "vision_overrides_misleading_user_text",
+    "query": "I have a severe shellfish allergy. A friend served me a yellow rice dish with vegetables on top, and assured me it has no seafood in it. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paella_de_marisco.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "This task is the mirror image of MM2. In MM2 the user text under-specifies the dish; here the user text actively misdescribes it. The friend claimed the dish has no seafood, but the photo clearly shows a seafood paella with visible mussels (in shell), shrimp and other shellfish. This is a common real-world failure mode: second-hand claims about a dish are often wrong, and a severe allergy is exactly the regime where they should not be trusted blindly. Text-only agent is expected to FAIL: with no shellfish signal in the description and an explicit reassurance from the friend, it has no basis to flag shellfish from text alone and is likely to over-clear the dish to SAFE. Vision agent is expected to PASS: it sees the visible shellfish and flags NOT SAFE, demonstrating that vision can act as an independent fact-check on user-provided text rather than only filling gaps the text leaves open.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ],
+    "vision_input": false,
+    "image_fetch_error": null,
+    "final_answer": "SAFE. Based on the description, it’s a yellow rice dish with vegetables and no seafood was identified. The allergen check found no shellfish-related issues in the stated dish. There is still some residual risk from cross-contact or hidden seafood-based stock/sauce, so if you have a severe shellfish allergy, confirm there was no shrimp paste, fish sauce, oyster sauce, or shared cooking oil. If you want a safer alternative, choose plain rice with simply cooked vegetables prepared in a shellfish-free kitchen.",
+    "tool_calls": [
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "yellow rice dish with vegetables on top",
+          "allergies": "shellfish",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "SAFE. Based on the description, it’s a yellow rice dish with vegetables and no seafood was identified. The allergen check found no shellfish-related issues in the stated dish. There is still some residual risk from cross-contact or hidden seafood-based stock/sauce, so if you have a severe shellfish allergy, confirm there was no shrimp paste, fish sauce, oyster sauce, or shared cooking oil. If you want a safer alternative, choose plain rice with simply cooked vegetables prepared in a shellfish-free kitchen."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"safe\": true, \"violations\": [], \"checked_constraints\": [\"shellfish\"], \"message\": \"No restricted terms found.\"}",
+      "SAFE. Based on the description, it’s a yellow rice dish with vegetables and no seafood was identified. The allergen check found no shellfish-related issues in the stated dish. There is still some residual risk from cross-contact or hidden seafood-based stock/sauce, so if you have a severe shellfish allergy, confirm there was no shrimp paste, fish sauce, oyster sauce, or shared cooking oil. If you want a safer alternative, choose plain rice with simply cooked vegetables prepared in a shellfish-free kitchen."
+    ],
+    "total_latency_s": 2.12,
+    "error": null,
+    "judge_score": 1,
+    "correctness_pass": false,
+    "latency_pass": true,
+    "success": false
+  },
+  {
+    "trace_id": "9729849b-81a6-4339-b220-97b24139c935",
+    "task_id": "MM5",
+    "category": "vision_overconfidence_visually_invisible_allergen",
+    "query": "I have a fish allergy. Someone served me what looks like a side of spicy fermented cabbage at a Korean restaurant. Is it safe for me to eat?",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kimchi.jpg",
+    "expected_verdict": "NOT_SAFE",
+    "expected_behavior": "This task is designed to expose a natural failure mode of the vision agent: vision grounding can backfire when the safety-determining ingredient is fundamentally non-visual. The dish is kimchi, which is standardly fermented with jeotgal (salted fish/shrimp paste) or fish sauce — meaning it is unsafe for a fish allergy even though no fish is visible. The text-only agent is expected to PASS: from the description 'spicy fermented cabbage at a Korean restaurant' it can identify the dish as kimchi via recipe knowledge and flag the fish-sauce risk (NOT SAFE). The vision agent is expected to FAIL by over-trusting its visual extraction: read_food_image sees napa cabbage, chili paste, garlic, scallion — all plant ingredients, no fish visible — and reports a clean allergen profile, leading the agent to over-clear the dish to SAFE. This shows that 'visible ingredients' is not the same as 'all ingredients' and that vision can hurt when the safety signal lives in the recipe rather than in the photo.",
+    "model_id": "gpt-5.4-mini",
+    "tool_set": [
+      "web_search",
+      "visit_webpage",
+      "allergen_checker",
+      "ingredient_substitution",
+      "final_answer"
+    ],
+    "vision_input": false,
+    "image_fetch_error": null,
+    "final_answer": "NOT SAFE. A Korean spicy fermented cabbage side is likely kimchi, which commonly contains fish sauce, salted shrimp, or anchovy-based seasoning. Because you have a fish allergy, it’s safer to avoid it unless the restaurant confirms it is fish-free. Safe alternative: ask for plain rice or a clearly vegan kimchi labeled fish-free.",
+    "tool_calls": [
+      {
+        "name": "allergen_checker",
+        "arguments": {
+          "recipe_text": "Side of spicy fermented cabbage at a Korean restaurant; likely kimchi or similar fermented cabbage side dish. Possible hidden ingredients may include fish sauce, salted shrimp, anchovy paste, or other seafood-based seasonings.",
+          "allergies": "fish",
+          "dietary_restrictions": null
+        }
+      },
+      {
+        "name": "final_answer",
+        "arguments": {
+          "answer": "NOT SAFE. A Korean spicy fermented cabbage side is likely kimchi, which commonly contains fish sauce, salted shrimp, or anchovy-based seasoning. Because you have a fish allergy, it’s safer to avoid it unless the restaurant confirms it is fish-free. Safe alternative: ask for plain rice or a clearly vegan kimchi labeled fish-free."
+        }
+      }
+    ],
+    "step_observations": [
+      "{\"safe\": true, \"violations\": [], \"checked_constraints\": [], \"message\": \"No restricted terms found.\"}",
+      "NOT SAFE. A Korean spicy fermented cabbage side is likely kimchi, which commonly contains fish sauce, salted shrimp, or anchovy-based seasoning. Because you have a fish allergy, it’s safer to avoid it unless the restaurant confirms it is fish-free. Safe alternative: ask for plain rice or a clearly vegan kimchi labeled fish-free."
+    ],
+    "total_latency_s": 2.8,
+    "error": null,
+    "judge_score": 5,
+    "correctness_pass": true,
+    "latency_pass": true,
+    "success": true
+  }
+]

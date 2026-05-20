@@ -1,0 +1,46 @@
+{
+  "trace_id": "7cf59e39-a154-46a8-872b-0d69bb895c81",
+  "task_id": "MM1",
+  "category": "vague_dish_visible_allergen",
+  "query": "I have a peanut allergy. The waiter brought me a Thai noodle stir-fry but didn't say exactly what's in it. Is it safe for me to eat?",
+  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Phat_Thai_kung_Chang_Khien_street_stall.jpg",
+  "expected_verdict": "NOT_SAFE",
+  "expected_behavior": "Vision agent should identify pad thai with visible peanuts on top and give a confidently-grounded NOT SAFE. Text-only agent can at best say 'Thai noodle stir-fries sometimes contain peanuts so treat as risky', which is correct in verdict but weaker because it cannot see the actual peanut garnish.",
+  "model_id": "gpt-5.4-mini",
+  "tool_set": [
+    "web_search",
+    "visit_webpage",
+    "allergen_checker",
+    "ingredient_substitution",
+    "final_answer"
+  ],
+  "vision_input": false,
+  "image_fetch_error": null,
+  "final_answer": "NOT SAFE. A Thai noodle stir-fry commonly contains peanut sauce, crushed peanuts, or peanut oil, and the dish was not specified in enough detail to rule that out. Because you have a peanut allergy, it’s safer not to eat it. Safe alternative: ask for a clearly peanut-free dish prepared separately, such as plain rice with grilled chicken and vegetables.",
+  "tool_calls": [
+    {
+      "name": "allergen_checker",
+      "arguments": {
+        "recipe_text": "Thai noodle stir-fry",
+        "allergies": "peanut",
+        "dietary_restrictions": null
+      }
+    },
+    {
+      "name": "final_answer",
+      "arguments": {
+        "answer": "NOT SAFE. A Thai noodle stir-fry commonly contains peanut sauce, crushed peanuts, or peanut oil, and the dish was not specified in enough detail to rule that out. Because you have a peanut allergy, it’s safer not to eat it. Safe alternative: ask for a clearly peanut-free dish prepared separately, such as plain rice with grilled chicken and vegetables."
+      }
+    }
+  ],
+  "step_observations": [
+    "{\"safe\": true, \"violations\": [], \"checked_constraints\": [\"peanut\"], \"message\": \"No restricted terms found.\"}",
+    "NOT SAFE. A Thai noodle stir-fry commonly contains peanut sauce, crushed peanuts, or peanut oil, and the dish was not specified in enough detail to rule that out. Because you have a peanut allergy, it’s safer not to eat it. Safe alternative: ask for a clearly peanut-free dish prepared separately, such as plain rice with grilled chicken and vegetables."
+  ],
+  "total_latency_s": 2.89,
+  "error": null,
+  "judge_score": 4,
+  "correctness_pass": true,
+  "latency_pass": true,
+  "success": true
+}

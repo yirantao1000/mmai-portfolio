@@ -1,0 +1,30 @@
+[
+  {
+    "config": "primary_full",
+    "pass_rate": 0.875,
+    "avg_latency_s": 10.19,
+    "total_tokens": 204383,
+    "total_cost_usd": 0.03272
+  },
+  {
+    "config": "primary_minimal",
+    "pass_rate": 0.75,
+    "avg_latency_s": 6.61,
+    "total_tokens": 106414,
+    "total_cost_usd": 0.01716
+  },
+  {
+    "config": "alt_full",
+    "pass_rate": 0.875,
+    "avg_latency_s": 10.59,
+    "total_tokens": 434484,
+    "total_cost_usd": 0.02264
+  },
+  {
+    "config": "alt_minimal",
+    "pass_rate": 0.75,
+    "avg_latency_s": 9.5,
+    "total_tokens": 247086,
+    "total_cost_usd": 0.01304
+  }
+]
