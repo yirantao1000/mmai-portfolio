@@ -1,0 +1,66 @@
+face_detector:
+  model: retinaface
+  confidence_threshold: 0.3
+  select_strategy: largest
+  bbox_expand: 0.2
+emotion_detector:
+  model: enet_b0_8_va_mtl
+  input_size: 260
+gaze_detector:
+  model: L2CSNet_gaze360
+  input_size: 448
+  yaw_threshold: 38.46
+  pitch_threshold: 28.17
+pose_detector:
+  static_image_mode: false
+  model_complexity: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+  open_posture_min_ratio: 0.2
+  open_posture_max_ratio: 1.2
+  face_cover_ratio: 0.474
+  depth_min_meters: 0.1
+  depth_max_meters: 2.0
+  history_size: 10
+  depth_outlier_threshold: 0.4
+  withdrawal_threshold_meters: 0.227
+  posture_drop_threshold: 0.15
+  posture_drop_gate: 0.204
+comfort:
+  gamma: 0.006
+  delta: 0.0
+  mouth_cover_penalty: 24.94
+  withdrawal_penalty: 32.18
+  ema_time_constant_s: 0.863
+  phase_warmup_s: 0.3
+  no_face_decay_rate: 0.15
+  no_face_decay_target: 35.0
+  no_pose_decay_rate: 0.3
+  no_pose_decay_target: 50.0
+  phase_weights:
+    approach:
+      emotion_weight: 0.5
+      posture_weight: 0.5
+      gaze_weight: 0.3
+    intent:
+      emotion_weight: 0.832
+      posture_weight: 0.1
+      gaze_weight: 0.705
+    execution:
+      emotion_weight: 0.887
+      posture_weight: 0.11
+      gaze_weight: 0.661
+  abort_threshold: 56.0
+  calibrated_variant: B
+visualization:
+  show_bbox: true
+  show_comfort_bar: true
+  show_emotion_text: true
+  show_gaze_text: true
+  show_posture_text: true
+  show_depth_marker: true
+  show_state_warnings: true
+  show_fps: true
+  show_phase: true
+  bbox_thickness: 2
+device: cuda:0

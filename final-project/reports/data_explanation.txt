@@ -1,0 +1,90 @@
+Here is a complete breakdown of how the data recording and classification processes work within your .json files.
+
+These JSON files act as the "summary notes" for your project. Instead of making the AI guess what is happening inside the heavy video (.bag) files, the JSON file provides the exact context and timeline.
+
+You can think of this workflow in two main phases:
+
+📝 Phase 1: Data Recording (Initial Metadata)
+This phase happens on the robot when you run record.py. As soon as a recording finishes, the script generates a foundational JSON file containing the essential metadata.
+
+Key Data Recorded:
+
+Context: What scenario was filmed (scenario_code, scenario_name).
+
+Session Details: When it was recorded (timestamp) and how long it is (duration_seconds).
+
+Hardware: The specific camera used (realsense_serial).
+
+[Example: Initial JSON State]
+
+JSON
+{
+    "scenario_code": "SC-05",
+    "scenario_name": "Distracted mid-handover",
+    "timestamp": "2026-04-14_23-04-11",
+    "duration_seconds": 12.5,
+    "note": "Participant looked at phone",
+    "realsense_serial": "838212070352"
+}
+At this stage, the JSON simply tells the system: "This is a 12.5-second video of the 'Distracted' scenario."
+
+🏷️ Phase 2: Data Classification & Labeling (Post-processing)
+This phase happens when you sit down at your laptop and run label_tool.py. The tool reads the initial JSON file, dynamically classifies the scenario, and attaches the precise timeline.
+
+1. Automatic Classification
+The tool looks at the "scenario_code" to determine the structure of the interaction:
+
+If it reads "SC-01" (Walk-by) ➔ It classifies it as a 3-step action (Start ➔ Signal ➔ Abort).
+
+If it reads anything else ("SC-02" to "SC-05") ➔ It classifies it as a 4-step action (Start ➔ Signal ➔ Handover ➔ End).
+
+2. Timestamp Labeling (Overwriting)
+As you watch the video and press the hotkeys (S, I, H, E, or A), the program records the exact seconds. When you press Q to quit, it updates the original JSON file by appending a new "labels" dictionary to the bottom.
+
+[Example: Final Labeled JSON State]
+
+JSON
+{
+    "scenario_code": "SC-05",
+    "scenario_name": "Distracted mid-handover",
+    "timestamp": "2026-04-14_23-04-11",
+    "duration_seconds": 12.5,
+    "note": "Participant looked at phone",
+    "realsense_serial": "838212070352",
+    "labels": {
+        "start_time": 2.15,
+        "signal_time": 4.50,
+        "handover_time": 8.20,
+        "end_time": 11.10
+    }
+}
+
+when runing the few-shot learning model, the Python training script does not need to blindly process the entire video file from start to finish.
+
+Instead, it reads this lightweight JSON file first, which acts as an answer key:
+
+"Okay, this is an SC-05 (Distracted) interaction. I need to crop the video frames between 2.15s and 4.50s to learn what 'Intent Signaling' looks like, and look at the frames after 8.20s to learn what a 'Distracted/Failed Handover' looks like."
+
+By building this pipeline (Recording ➔ Classification ➔ Labeling), you have transformed raw, heavy robot interactions into a perfectly structured dataset that the AI can easily digest!
+
+
+For scenario 1: Walk-by, no interest
+i) A human appears in the frame (start
+•time).
+ii) The intent signal starts-shaking the cup (signal time). ili) The person just walks by and disappears behind the fridge (abort_time).
+Added to JSON file:
+"start_time": null,
+"signal_time": null,
+"abort_time": null
+
+For scenario 2,3,4, and 5: Shows interest and approach to robot upon signaling (shaking the cup)
+i) A human appears in the frame (start_time). ii) The intent signal starts—shaking the cup (signal_time). ili) The person shows interest and approaches the robot.
+iv) The robot stretches its arm and hands over the yellow cup (handover_time).
+Either the human receives it (Scenario 2- end_time: when the human receives the cup)
+OR
+v-2) The human ignores it, and the arm retracts (Scenarios 3, 4, and 5 - end_time: after the arm retracts).
+
+"start_time": 3.04,
+"signal time": 4.14,
+"handover_time": 11.41,
+"end_time": 15.88

@@ -1,0 +1,42 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+models/**/*.pt
+models/**/*.pth
+models/**/*.onnx
+models/**/*.pkl
+models/L2CSNet/
+*.egg-info/
+dist/
+build/
+.eggs/
+data/
+rendering_output/
+outputs/
+cache/
+.claude/
+
+# secrets
+.openai_key
+.env
+
+# v2 / v3 distillation artifacts
+annotations/
+frame_cache/
+checkpoints/
+checkpoints_v2/
+rendering_output_v2/
+
+# large data staging
+data_incoming/
+_downloads/
+
+# rendered videos (mirrored to HF dataset; don't ship in git)
+renders/
+
+# auto-generated summary text
+FINAL_SUMMARY.txt
+
+# one-off helper scripts not for the team
+scripts/_hf_upload_v3.py

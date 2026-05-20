@@ -1,0 +1,197 @@
+Loaded 8 held-out test recordings.
+
+scenario                       n   mean               95% CI    min    max
+---------------------------------------------------------------------------
+sc01_walkby                    2   55.8  [ 55.8,  55.9]    55.8   55.9
+sc02_comfortable               2   89.1  [ 87.7,  90.5]    87.7   90.5
+sc03_gradual_discomfort        1   82.4  [ 82.4,  82.4]    82.4   82.4
+sc04_sudden_withdrawal         1   77.6  [ 77.6,  77.6]    77.6   77.6
+sc05_distracted                2   74.5  [ 73.1,  75.9]    73.1   75.9
+
+Abort decisions at τ* = 80.0:
+  abort-correct (TP): 3   abort-missed (FN): 0
+  false-abort (FP):   0   continue-correct (TN): 2
+
+Test-set best Youden J = 1.000 at τ = 78.0
+ROC (selected points):
+  τ= 30.0   TPR=0.00   FPR=0.00
+  τ= 35.0   TPR=0.00   FPR=0.00
+  τ= 40.0   TPR=0.00   FPR=0.00
+  τ= 45.0   TPR=0.00   FPR=0.00
+  τ= 50.0   TPR=0.00   FPR=0.00
+  τ= 55.0   TPR=0.00   FPR=0.00
+  τ= 60.0   TPR=0.67   FPR=0.00
+  τ= 65.0   TPR=0.67   FPR=0.00
+  τ= 70.0   TPR=0.67   FPR=0.00
+  τ= 75.0   TPR=0.67   FPR=0.00
+  τ= 80.0   TPR=1.00   FPR=0.00
+
+Trajectory metrics (per recording):
+scenario                     name                            slope  start    end sign?
+------------------------------------------------------------------------------------------
+sc01_walkby                  2026-04-14_22-36-18           -0.7523   55.8   52.3     Y
+sc01_walkby                  2026-04-14_22-37-53           -0.3206   55.9   53.9     Y
+sc02_comfortable             2026-04-14_22-45-01           +0.3381   68.6   84.2     Y
+sc02_comfortable             2026-04-14_22-46-29           -0.1372   77.1   87.0     N
+sc03_gradual_discomfort      2026-04-14_22-54-52           -2.7022   82.0   56.8     Y
+sc04_sudden_withdrawal       2026-04-14_22-59-48           -2.8226   69.3   57.0     Y
+sc05_distracted              2026-04-14_23-01-24           -3.6766   81.1   54.5     Y
+sc05_distracted              2026-04-14_23-02-10           -4.1255   75.0   51.3     Y
+
+Per-scenario slope-sign agreement:
+  sc01_walkby                  n=2  agree=2/2  (100%)  mean_slope=-0.5365
+  sc02_comfortable             n=2  agree=1/2  (50%)  mean_slope=+0.1004
+  sc03_gradual_discomfort      n=1  agree=1/1  (100%)  mean_slope=-2.7022
+  sc04_sudden_withdrawal       n=1  agree=1/1  (100%)  mean_slope=-2.8226
+  sc05_distracted              n=2  agree=2/2  (100%)  mean_slope=-3.9010
+
+Detection-rate sanity (test split):
+  sc01_walkby                  2026-04-14_22-36-18  face=40%  pose=40%
+  sc01_walkby                  2026-04-14_22-37-53  face=31%  pose=30%
+  sc02_comfortable             2026-04-14_22-45-01  face=68%  pose=88%
+  sc02_comfortable             2026-04-14_22-46-29  face=72%  pose=79%
+  sc03_gradual_discomfort      2026-04-14_22-54-52  face=64%  pose=67%
+  sc04_sudden_withdrawal       2026-04-14_22-59-48  face=65%  pose=65%
+  sc05_distracted              2026-04-14_23-01-24  face=63%  pose=66%
+  sc05_distracted              2026-04-14_23-02-10  face=68%  pose=68%
+
+Wrote calibration_report_A.json
+Loaded 8 held-out test recordings.
+
+scenario                       n   mean               95% CI    min    max
+---------------------------------------------------------------------------
+sc01_walkby                    2   54.3  [ 54.2,  54.4]    54.2   54.4
+sc02_comfortable               2   90.6  [ 90.1,  91.1]    90.1   91.1
+sc03_gradual_discomfort        1   89.3  [ 89.3,  89.3]    89.3   89.3
+sc04_sudden_withdrawal         1   84.2  [ 84.2,  84.2]    84.2   84.2
+sc05_distracted                2   76.9  [ 75.3,  78.4]    75.3   78.4
+
+Abort decisions at τ* = 56.0:
+  abort-correct (TP): 2   abort-missed (FN): 1
+  false-abort (FP):   0   continue-correct (TN): 2
+
+Test-set best Youden J = 0.667 at τ = 55.0
+ROC (selected points):
+  τ= 30.0   TPR=0.00   FPR=0.00
+  τ= 35.0   TPR=0.00   FPR=0.00
+  τ= 40.0   TPR=0.00   FPR=0.00
+  τ= 45.0   TPR=0.00   FPR=0.00
+  τ= 50.0   TPR=0.00   FPR=0.00
+  τ= 55.0   TPR=0.67   FPR=0.00
+  τ= 60.0   TPR=0.67   FPR=0.00
+  τ= 65.0   TPR=0.67   FPR=0.00
+  τ= 70.0   TPR=0.67   FPR=0.00
+  τ= 75.0   TPR=0.67   FPR=0.00
+  τ= 80.0   TPR=0.67   FPR=0.00
+
+Trajectory metrics (per recording):
+scenario                     name                            slope  start    end sign?
+------------------------------------------------------------------------------------------
+sc01_walkby                  2026-04-14_22-36-18           +0.5006   52.9   53.7     N
+sc01_walkby                  2026-04-14_22-37-53           +0.1981   52.4   52.7     N
+sc02_comfortable             2026-04-14_22-45-01           +0.9888   60.8   91.9     Y
+sc02_comfortable             2026-04-14_22-46-29           +1.0478   63.9   93.1     Y
+sc03_gradual_discomfort      2026-04-14_22-54-52           -0.3832   68.2   65.6     Y
+sc04_sudden_withdrawal       2026-04-14_22-59-48           -1.4393   61.4   57.4     Y
+sc05_distracted              2026-04-14_23-01-24           -3.2344   70.1   53.4     Y
+sc05_distracted              2026-04-14_23-02-10           -3.8131   65.4   49.0     Y
+
+Per-scenario slope-sign agreement:
+  sc01_walkby                  n=2  agree=0/2  (0%)  mean_slope=+0.3494
+  sc02_comfortable             n=2  agree=2/2  (100%)  mean_slope=+1.0183
+  sc03_gradual_discomfort      n=1  agree=1/1  (100%)  mean_slope=-0.3832
+  sc04_sudden_withdrawal       n=1  agree=1/1  (100%)  mean_slope=-1.4393
+  sc05_distracted              n=2  agree=2/2  (100%)  mean_slope=-3.5237
+
+Detection-rate sanity (test split):
+  sc01_walkby                  2026-04-14_22-36-18  face=40%  pose=40%
+  sc01_walkby                  2026-04-14_22-37-53  face=31%  pose=30%
+  sc02_comfortable             2026-04-14_22-45-01  face=68%  pose=88%
+  sc02_comfortable             2026-04-14_22-46-29  face=72%  pose=79%
+  sc03_gradual_discomfort      2026-04-14_22-54-52  face=64%  pose=67%
+  sc04_sudden_withdrawal       2026-04-14_22-59-48  face=65%  pose=65%
+  sc05_distracted              2026-04-14_23-01-24  face=63%  pose=66%
+  sc05_distracted              2026-04-14_23-02-10  face=68%  pose=68%
+
+Wrote calibration_report_B.json
+Loading train recordings from data/split.json...
+  23 train recordings
+
+======================================================================
+  PHASE 1 — cheap race @ maxiter=15 popsize=8
+======================================================================
+
+--- variant A ---
+  J=1.000  slope_agree=0.70  margin=+27.3  combined=0.763  t=259.7s  τ*=78.0
+    slope sc01_walkby                  +0.1495
+    slope sc02_comfortable             +0.2538
+    slope sc03_gradual_discomfort      -0.9550
+    slope sc04_sudden_withdrawal       -1.4245
+    slope sc05_distracted              -1.8584
+--- variant B ---
+  J=1.000  slope_agree=0.43  margin=+31.2  combined=0.693  t=259.9s  τ*=76.0
+    slope sc01_walkby                  +0.7915
+    slope sc02_comfortable             +1.4717
+    slope sc03_gradual_discomfort      +0.9821
+    slope sc04_sudden_withdrawal       +0.4227
+    slope sc05_distracted              -0.7293
+--- variant C ---
+  J=1.000  slope_agree=0.35  margin=+28.9  combined=0.662  t=231.5s  τ*=61.0
+    slope sc01_walkby                  +1.4858
+    slope sc02_comfortable             +2.0410
+    slope sc03_gradual_discomfort      +0.8672
+    slope sc04_sudden_withdrawal       +0.7314
+    slope sc05_distracted              +0.3212
+--- variant F ---
+  J=1.000  slope_agree=0.39  margin=+26.6  combined=0.671  t=244.1s  τ*=62.0
+    slope sc01_walkby                  +1.6583
+    slope sc02_comfortable             +1.9567
+    slope sc03_gradual_discomfort      +0.4990
+    slope sc04_sudden_withdrawal       +0.3962
+    slope sc05_distracted              -0.1391
+
+Top-2 variants by Phase-1 combined score: ['A', 'B']
+
+======================================================================
+  PHASE 2 — full DE @ maxiter=50 popsize=15 on top-2
+======================================================================
+
+--- variant A (full DE) ---
+  J=1.000  slope_agree=0.83  margin=+25.9  combined=0.800  t=1253.7s  τ*=80.0
+    slope sc01_walkby                  -0.1513
+    slope sc02_comfortable             -0.1015
+    slope sc03_gradual_discomfort      -1.8871
+    slope sc04_sudden_withdrawal       -2.2956
+    slope sc05_distracted              -2.5803
+  wrote config/deploy_A.yaml
+--- variant B (full DE) ---
+  J=0.556  slope_agree=0.70  margin=+34.9  combined=0.556  t=1207.2s  τ*=56.0
+    slope sc01_walkby                  -0.0506
+    slope sc02_comfortable             +0.9312
+    slope sc03_gradual_discomfort      +0.3705
+    slope sc04_sudden_withdrawal       -0.5147
+    slope sc05_distracted              -1.7771
+  wrote config/deploy_B.yaml
+
+======================================================================
+  PHASE 3 — held-out evaluation
+======================================================================
+
+--- variant A: /home/farandhigh-ubuntu/Documents/mmai-emotion-detection/.venv/bin/python /home/farandhigh-ubuntu/Documents/mmai-integrated-detection/scripts/evaluate_test.py --config /home/farandhigh-ubuntu/Documents/mmai-integrated-detection/config/deploy_A.yaml --report /home/farandhigh-ubuntu/Documents/mmai-integrated-detection/calibration_report_A.json ---
+--- variant B: /home/farandhigh-ubuntu/Documents/mmai-emotion-detection/.venv/bin/python /home/farandhigh-ubuntu/Documents/mmai-integrated-detection/scripts/evaluate_test.py --config /home/farandhigh-ubuntu/Documents/mmai-integrated-detection/config/deploy_B.yaml --report /home/farandhigh-ubuntu/Documents/mmai-integrated-detection/calibration_report_B.json ---
+
+======================================================================
+  LEADERBOARD
+======================================================================
+
+var  P1_combined   P1_J P1_agree P1_margin   TEST_J sc02_slope_ok   sc02_mean
+-----------------------------------------------------------------------------------------------
+  A        0.763  1.000     0.70     +27.3    1.000           1/2        89.1
+  B        0.693  1.000     0.43     +31.2    0.667           2/2        90.6
+  C        0.662  1.000     0.35     +28.9      nan             -         nan
+  F        0.671  1.000     0.39     +26.6      nan             -         nan
+
+Wrote calibration_race_report.json
+
+Promote a winner to config/deploy.yaml by copying the chosen
+config/deploy_<variant>.yaml over deploy.yaml (baseline is preserved).

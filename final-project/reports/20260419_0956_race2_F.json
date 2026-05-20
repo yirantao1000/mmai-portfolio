@@ -1,0 +1,412 @@
+{
+  "config": "config/deploy_F.yaml",
+  "n_test": 8,
+  "scenario_stats": {
+    "sc01_walkby": {
+      "n": 2,
+      "mean": 53.537227630615234,
+      "ci_lo": 53.33889389038086,
+      "ci_hi": 53.73556137084961,
+      "min": 53.33889389038086,
+      "max": 53.73556137084961
+    },
+    "sc02_comfortable": {
+      "n": 2,
+      "mean": 73.64476776123047,
+      "ci_lo": 69.72518920898438,
+      "ci_hi": 77.56434631347656,
+      "min": 69.72518920898438,
+      "max": 77.56434631347656
+    },
+    "sc03_gradual_discomfort": {
+      "n": 1,
+      "mean": 56.64956283569336,
+      "ci_lo": 56.64956283569336,
+      "ci_hi": 56.64956283569336,
+      "min": 56.64956283569336,
+      "max": 56.64956283569336
+    },
+    "sc04_sudden_withdrawal": {
+      "n": 1,
+      "mean": 51.693267822265625,
+      "ci_lo": 51.693267822265625,
+      "ci_hi": 51.693267822265625,
+      "min": 51.693267822265625,
+      "max": 51.693267822265625
+    },
+    "sc05_distracted": {
+      "n": 2,
+      "mean": 52.00355911254883,
+      "ci_lo": 51.96892547607422,
+      "ci_hi": 52.03819274902344,
+      "min": 51.96892547607422,
+      "max": 52.03819274902344
+    }
+  },
+  "decisions_at_tau_star": {
+    "tp": 3,
+    "fn": 0,
+    "fp": 0,
+    "tn": 2,
+    "tau_star": 56.0
+  },
+  "roc": [
+    {
+      "tau": 30.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 31.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 32.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 33.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 34.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 35.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 36.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 37.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 38.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 39.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 40.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 41.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 42.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 43.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 44.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 45.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 46.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 47.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 48.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 49.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 50.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 51.0,
+      "abort_tpr": 0.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 52.0,
+      "abort_tpr": 0.3333333333333333,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 53.0,
+      "abort_tpr": 0.3333333333333333,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 54.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 55.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 56.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 57.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 58.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 59.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 60.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 61.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 62.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 63.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 64.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 65.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 66.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 67.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 68.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 69.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.0
+    },
+    {
+      "tau": 70.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 71.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 72.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 73.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 74.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 75.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 76.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 77.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 0.5
+    },
+    {
+      "tau": 78.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 1.0
+    },
+    {
+      "tau": 79.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 1.0
+    },
+    {
+      "tau": 80.0,
+      "abort_tpr": 1.0,
+      "abort_fpr": 1.0
+    }
+  ],
+  "best_j_on_test": {
+    "J": 1.0,
+    "tau": 54.0
+  },
+  "trajectory": [
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-36-18",
+      "slope": 3.635586617016073,
+      "start_mean": 47.40434265136719,
+      "end_mean": 55.35519027709961,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-37-53",
+      "slope": 2.1278982976275516,
+      "start_mean": 46.853919982910156,
+      "end_mean": 52.383949279785156,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-45-01",
+      "slope": 3.002466919507394,
+      "start_mean": 50.99158477783203,
+      "end_mean": 87.66267395019531,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-46-29",
+      "slope": 2.7171344583390287,
+      "start_mean": 51.19063186645508,
+      "end_mean": 88.90574645996094,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc03_gradual_discomfort",
+      "name": "2026-04-14_22-54-52",
+      "slope": 1.8904365422672746,
+      "start_mean": 50.382747650146484,
+      "end_mean": 66.67259216308594,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc04_sudden_withdrawal",
+      "name": "2026-04-14_22-59-48",
+      "slope": 1.4758332784553068,
+      "start_mean": 49.18157196044922,
+      "end_mean": 58.80238723754883,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-01-24",
+      "slope": 0.40803869701860185,
+      "start_mean": 48.25339126586914,
+      "end_mean": 48.92030715942383,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-02-10",
+      "slope": 0.08298116915902523,
+      "start_mean": 49.339012145996094,
+      "end_mean": 45.70772171020508,
+      "slope_sign_match": 0
+    }
+  ],
+  "slope_sign_agreement": {
+    "sc01_walkby": {
+      "n": 2,
+      "agree": 0,
+      "rate": 0.0,
+      "mean_slope": 2.8817424573218124
+    },
+    "sc02_comfortable": {
+      "n": 2,
+      "agree": 2,
+      "rate": 1.0,
+      "mean_slope": 2.8598006889232113
+    },
+    "sc03_gradual_discomfort": {
+      "n": 1,
+      "agree": 0,
+      "rate": 0.0,
+      "mean_slope": 1.8904365422672746
+    },
+    "sc04_sudden_withdrawal": {
+      "n": 1,
+      "agree": 0,
+      "rate": 0.0,
+      "mean_slope": 1.4758332784553068
+    },
+    "sc05_distracted": {
+      "n": 2,
+      "agree": 0,
+      "rate": 0.0,
+      "mean_slope": 0.24550993308881353
+    }
+  }
+}

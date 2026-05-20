@@ -1,0 +1,346 @@
+{
+  "config": "config/deploy.yaml",
+  "per_recording": [
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-35-00",
+      "slope": -0.07403986268233968,
+      "mean_comfort": 55.15748977661133,
+      "start_mean": 55.213462829589844,
+      "end_mean": 53.48545837402344,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-37-13",
+      "slope": -0.09742977668785582,
+      "mean_comfort": 55.654762268066406,
+      "start_mean": 55.579925537109375,
+      "end_mean": 53.97600173950195,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-38-28",
+      "slope": -1.184215100552035,
+      "mean_comfort": 54.77920150756836,
+      "start_mean": 55.613521575927734,
+      "end_mean": 50.64178466796875,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-39-13",
+      "slope": -0.05372496122965126,
+      "mean_comfort": 56.02689743041992,
+      "start_mean": 54.95817565917969,
+      "end_mean": 54.71110153198242,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-40-34",
+      "slope": 0.6493449113300053,
+      "mean_comfort": 56.33805465698242,
+      "start_mean": 55.32213592529297,
+      "end_mean": 56.79787063598633,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-44-18",
+      "slope": -0.6525696063061415,
+      "mean_comfort": 86.01241302490234,
+      "start_mean": 81.09341430664062,
+      "end_mean": 70.11146545410156,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-45-49",
+      "slope": 0.04731791796816156,
+      "mean_comfort": 88.08709716796875,
+      "start_mean": 69.58979034423828,
+      "end_mean": 80.52693939208984,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-47-21",
+      "slope": 0.4316943065919252,
+      "mean_comfort": 90.2609634399414,
+      "start_mean": 75.97474670410156,
+      "end_mean": 89.89107513427734,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-48-05",
+      "slope": 0.5699638804496517,
+      "mean_comfort": 91.4737548828125,
+      "start_mean": 68.2626724243164,
+      "end_mean": 89.21569061279297,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-48-44",
+      "slope": -0.5558980812273637,
+      "mean_comfort": 89.93975830078125,
+      "start_mean": 79.5835189819336,
+      "end_mean": 73.71379852294922,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-49-27",
+      "slope": -0.4607794542541898,
+      "mean_comfort": 90.7660140991211,
+      "start_mean": 77.12679290771484,
+      "end_mean": 75.4773178100586,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc03_gradual_discomfort",
+      "name": "2026-04-14_22-54-17",
+      "slope": -2.698674747591422,
+      "mean_comfort": 80.8669204711914,
+      "start_mean": 73.42153930664062,
+      "end_mean": 60.41514587402344,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc03_gradual_discomfort",
+      "name": "2026-04-14_22-55-32",
+      "slope": -1.3487146922535962,
+      "mean_comfort": 79.70411682128906,
+      "start_mean": 58.63461685180664,
+      "end_mean": 57.00395965576172,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc03_gradual_discomfort",
+      "name": "2026-04-14_22-56-06",
+      "slope": -1.285574851479181,
+      "mean_comfort": 80.1897964477539,
+      "start_mean": 56.981571197509766,
+      "end_mean": 55.85790252685547,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc03_gradual_discomfort",
+      "name": "2026-04-14_22-56-43",
+      "slope": -2.2113945719138677,
+      "mean_comfort": 81.35445404052734,
+      "start_mean": 76.61357879638672,
+      "end_mean": 55.92128372192383,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc04_sudden_withdrawal",
+      "name": "2026-04-14_22-57-29",
+      "slope": -2.3100799089194948,
+      "mean_comfort": 79.14041137695312,
+      "start_mean": 69.37649536132812,
+      "end_mean": 58.00236129760742,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc04_sudden_withdrawal",
+      "name": "2026-04-14_22-58-03",
+      "slope": -1.8179706980087638,
+      "mean_comfort": 79.09626007080078,
+      "start_mean": 62.505226135253906,
+      "end_mean": 57.693946838378906,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc04_sudden_withdrawal",
+      "name": "2026-04-14_22-58-41",
+      "slope": -2.7834333022374,
+      "mean_comfort": 79.4994888305664,
+      "start_mean": 74.7662353515625,
+      "end_mean": 56.73762893676758,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc04_sudden_withdrawal",
+      "name": "2026-04-14_22-59-15",
+      "slope": -2.268624171296798,
+      "mean_comfort": 79.73748016357422,
+      "start_mean": 70.36161804199219,
+      "end_mean": 59.14052200317383,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-00-51",
+      "slope": -3.240977318129324,
+      "mean_comfort": 74.18019104003906,
+      "start_mean": 61.78008270263672,
+      "end_mean": 52.164794921875,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-03-00",
+      "slope": -1.7057521658283683,
+      "mean_comfort": 82.94910430908203,
+      "start_mean": 66.8577880859375,
+      "end_mean": 56.850040435791016,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-03-34",
+      "slope": -3.3222204417620413,
+      "mean_comfort": 69.31196594238281,
+      "start_mean": 56.178897857666016,
+      "end_mean": 51.231956481933594,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-04-11",
+      "slope": -2.0499884343302877,
+      "mean_comfort": 71.49542236328125,
+      "start_mean": 56.997432708740234,
+      "end_mean": 55.01559829711914,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-36-18",
+      "slope": -0.7523466329559991,
+      "mean_comfort": 55.76772689819336,
+      "start_mean": 55.83472442626953,
+      "end_mean": 52.34477996826172,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc01_walkby",
+      "name": "2026-04-14_22-37-53",
+      "slope": -0.32059843516634157,
+      "mean_comfort": 55.92695236206055,
+      "start_mean": 55.90908432006836,
+      "end_mean": 53.856544494628906,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-45-01",
+      "slope": 0.3380540488446183,
+      "mean_comfort": 87.71431732177734,
+      "start_mean": 68.6018295288086,
+      "end_mean": 84.15875244140625,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc02_comfortable",
+      "name": "2026-04-14_22-46-29",
+      "slope": -0.13716483504275404,
+      "mean_comfort": 90.46681213378906,
+      "start_mean": 77.14295959472656,
+      "end_mean": 87.0267105102539,
+      "slope_sign_match": 0
+    },
+    {
+      "scenario": "sc03_gradual_discomfort",
+      "name": "2026-04-14_22-54-52",
+      "slope": -2.7022357163012707,
+      "mean_comfort": 82.43553161621094,
+      "start_mean": 81.99720001220703,
+      "end_mean": 56.799312591552734,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc04_sudden_withdrawal",
+      "name": "2026-04-14_22-59-48",
+      "slope": -2.822619843200704,
+      "mean_comfort": 77.63996124267578,
+      "start_mean": 69.28992462158203,
+      "end_mean": 57.02425765991211,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-01-24",
+      "slope": -3.676622159620837,
+      "mean_comfort": 75.94078063964844,
+      "start_mean": 81.103271484375,
+      "end_mean": 54.46204376220703,
+      "slope_sign_match": 1
+    },
+    {
+      "scenario": "sc05_distracted",
+      "name": "2026-04-14_23-02-10",
+      "slope": -4.125468803028688,
+      "mean_comfort": 73.09107971191406,
+      "start_mean": 75.03317260742188,
+      "end_mean": 51.33054733276367,
+      "slope_sign_match": 1
+    }
+  ],
+  "per_scenario": {
+    "sc01_walkby": {
+      "n": 7,
+      "mean_comfort": 55.66444069998605,
+      "mean_slope": -0.26185855113488815,
+      "agree": 6,
+      "agree_n": 7,
+      "agree_rate": 0.8571428571428571,
+      "agree_ci": [
+        0.5714285969734192,
+        1.0
+      ]
+    },
+    "sc02_comfortable": {
+      "n": 8,
+      "mean_comfort": 89.34014129638672,
+      "mean_slope": -0.05242272787201155,
+      "agree": 4,
+      "agree_n": 8,
+      "agree_rate": 0.5,
+      "agree_ci": [
+        0.125,
+        0.875
+      ]
+    },
+    "sc03_gradual_discomfort": {
+      "n": 5,
+      "mean_comfort": 80.91016387939453,
+      "mean_slope": -2.0493189159078673,
+      "agree": 5,
+      "agree_n": 5,
+      "agree_rate": 1.0,
+      "agree_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    "sc04_sudden_withdrawal": {
+      "n": 5,
+      "mean_comfort": 79.02272033691406,
+      "mean_slope": -2.4005455847326322,
+      "agree": 5,
+      "agree_n": 5,
+      "agree_rate": 1.0,
+      "agree_ci": [
+        1.0,
+        1.0
+      ]
+    },
+    "sc05_distracted": {
+      "n": 6,
+      "mean_comfort": 74.49475733439128,
+      "mean_slope": -3.0201715537832583,
+      "agree": 6,
+      "agree_n": 6,
+      "agree_rate": 1.0,
+      "agree_ci": [
+        1.0,
+        1.0
+      ]
+    }
+  }
+}

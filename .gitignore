@@ -1,0 +1,15 @@
+*.bag
+__pycache__/
+*.pyc
+.openai_key
+.env
+annotations/
+frame_cache/
+checkpoints/
+checkpoints_v2/
+rendering_output_v2/
+data_incoming/
+_downloads/
+renders/
+FINAL_SUMMARY.txt
+data/
