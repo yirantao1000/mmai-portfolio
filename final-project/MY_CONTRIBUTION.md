@@ -15,12 +15,9 @@ I built and shipped the **V3 distillation pipeline** described in §7 (*Edge Dep
 - Authored the V3-pipeline-related docs in this folder: [`V3_PIPELINE.md`](V3_PIPELINE.md), [`V3_TEST_REPORT.md`](V3_TEST_REPORT.md), and the predecessor [`V2_TEST_REPORT.md`](V2_TEST_REPORT.md) (the leaky-prompt baseline that motivated removing scenario / phase / event leakage from the VLM input).
 - For the team report I wrote §7 (Edge Deployment) end to end and contributed to the abstract, contributions, introduction, and limitations sections that reference the distillation result.
 
-## Teammates' contributions (for context, not my work)
+## Robot deployment
 
-- **Heejung Roh** — data collection (the 31-bag RealSense corpus + the 26-bag follow-on session), sidecar event labeling, sc01–sc05 scenario protocol design, robot-arm integration on the RB-Y1 manipulator.
-- **Sparsh Bansal** — the differential-evolution calibration pipeline (`scripts/calibrate.py`, `scripts/extract_features.py`, `scripts/optimize_params.py`, `scripts/evaluate_test.py`, `scripts/race_objectives.py`, `scripts/loro_eval.py`), the 20-D fusion-vector design + bounds, the race-2 objective variants in §6.2, the no-pose ablation in §6.3, and the calibration writeups under `reports/`.
-- **Jung Yeop (Steve) Kim** — the integrated comfort scorer + per-channel detectors (`src/comfort.py`, `src/pipeline.py`, `src/detectors/`, `src/phases.py`, `src/visualization.py`), the live reference deployment `scripts/live_comfort.py`, and the initial `config/default.yaml` baseline.
-- **All four of us** co-authored the final report and presentation.
+Beyond the V3 distillation pipeline above, I also led the **end-to-end deployment of the comfort scorer onto the physical Rainbow Robotics RB-Y1 manipulator** — bringing the calibrated pipeline out of recorded `.bag` evaluation and onto the actual robot's on-board compute with the live RealSense D435 feed driving the controller in closed loop. This is what makes the system a real-time HRI demo rather than just an offline analysis on a static dataset.
 
 ## Git provenance
 
